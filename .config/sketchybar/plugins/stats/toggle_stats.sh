@@ -2,10 +2,8 @@
 
 stats=(
 	cpu.percent
-	memory
-	disk
-	network.up
-	network.down
+	memory.percent
+	disk.percent
 )
 
 hide_stats() {
@@ -15,7 +13,7 @@ hide_stats() {
 	done
 
 	sketchybar "${args[@]}" \
-		--set separator_right \
+		--set stats_minimizer \
 		icon=
 }
 
@@ -26,12 +24,12 @@ show_stats() {
 	done
 
 	sketchybar "${args[@]}" \
-		--set separator_right \
+		--set stats_minimizer \
 		icon=
 }
 
 toggle_stats() {
-	state=$(sketchybar --query separator_right | jq -r .icon.value)
+	state=$(sketchybar --query stats_minimizer | jq -r .icon.value)
 
 	case $state in
 	"")
