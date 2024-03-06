@@ -17,18 +17,18 @@ PADDINGS=4
 launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist > /dev/null 2>&1 &
 
 bar=(
+  color=$TRANSPARENT
   height=32
-  color=$BAR_COLOR
   shadow=off
   position=top
   sticky=on
-  padding_right=10
-  padding_left=10
+  padding_right=0
+  padding_left=0
   corner_radius=9
-  y_offset=8
+  y_offset=4
   margin=8
-  blur_radius=20
   notch_width=0
+  hidden=on
 )
 
 sketchybar --bar "${bar[@]}"
@@ -70,6 +70,8 @@ source "$ITEM_DIR/clock.sh"
 source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/stats/item.sh"
 # source "$ITEM_DIR/volume.sh"
+
+source "$ITEM_DIR/hide.sh"
 
 sketchybar --hotload on
 
