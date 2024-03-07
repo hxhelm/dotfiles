@@ -2,10 +2,11 @@
 
 disk=(
 	icon="$DISK"
-	icon.color="$ORANGE"
-    icon.font="$FONT:Bold:16.0"
+    icon.font="$FONT:Bold:18.0"
+    icon.padding_right=0
 	update_freq=60
     mach_helper="$STATS_HELPER"
+    padding_right=6
 )
 
 sketchybar  --add item disk.percent right \

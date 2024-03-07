@@ -22,5 +22,5 @@ sketchybar --add bracket stats cpu.percent \
 sketchybar --set         stats "${stats[@]}"
 
 # add padding to the leftmost item
-sketchybar --set disk.percent padding_left=2
+sketchybar --set disk.percent padding_left=4
 
