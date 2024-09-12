@@ -25,6 +25,7 @@ return {
       cmp.setup({
         sources = {
           { name = "nvim_lsp" },
+          { name = "crates" },
         },
         mapping = cmp.mapping.preset.insert({
           ["<CR>"] = cmp.mapping.confirm({ select = false }),
@@ -88,6 +89,23 @@ return {
           function(server_name)
             require("lspconfig")[server_name].setup({})
           end,
+        },
+      })
+    end,
+  },
+
+  -- adds completion to cargo packages
+  {
+    "saecki/crates.nvim",
+    event = { "BufRead Cargo.toml" },
+    config = function()
+      require("crates").setup({
+        completion = {
+          cmp = {
+            enabled = true,
+            max_results = 8, -- The maximum number of search results to display
+            min_chars = 3, -- The minimum number of charaters to type before completions begin appearing
+          },
         },
       })
     end,
