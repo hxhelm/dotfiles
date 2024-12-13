@@ -1,15 +1,24 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
 
-vim.g.rustfmt_autosave = 1
+-- vim-plug setup
+local Plug = vim.fn["plug#"]
+vim.call("plug#begin")
 
+-- list vim plugins here
+Plug("tpope/vim-sensible")
+Plug("tpope/vim-surround")
+Plug("AndrewRadev/splitjoin.vim")
+
+vim.call("plug#end")
+
+-- neovide setup
 if vim.g.neovide then
-  -- Put anything you want to happen only in Neovide here
   vim.g.neovide_scale_factor = 1.1
   vim.g.gui_font_default_size = 16
   vim.g.gui_font_size = vim.g.gui_font_default_size
   vim.g.gui_font_face = "FiraCode Nerd Font Mono"
-  vim.o.guifont = string.format("%s:h%s", vim.g.gui_font_face, vim.g.gui_font_size)
+  vim.o.guifont = string.format("%s:h%s:#e-subpixelantialias", vim.g.gui_font_face, vim.g.gui_font_size)
 
   vim.keymap.set("n", "<D-s>", ":w<CR>") -- Save
   vim.keymap.set("v", "<D-c>", '"+y') -- Copy
@@ -18,3 +27,6 @@ if vim.g.neovide then
     vim.api.nvim_paste(vim.fn.getreg("+"), true, -1)
   end, { noremap = true, silent = true })
 end
+
+-- misc settings
+vim.g.rustfmt_autosave = 1
