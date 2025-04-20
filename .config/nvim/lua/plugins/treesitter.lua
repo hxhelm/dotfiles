@@ -6,6 +6,7 @@ return {
         "html",
         "just",
         "php",
+        "python",
         "rust",
         "toml",
         "twig",

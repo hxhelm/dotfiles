@@ -20,6 +20,9 @@ if vim.g.neovide then
   vim.g.gui_font_face = "FiraCode Nerd Font Mono"
   vim.o.guifont = string.format("%s:h%s:#e-subpixelantialias", vim.g.gui_font_face, vim.g.gui_font_size)
 
+  vim.g.neovide_cursor_animation_length = 0
+  vim.g.neovide_scroll_animation_length = 0
+
   vim.keymap.set("n", "<D-s>", ":w<CR>") -- Save
   vim.keymap.set("v", "<D-c>", '"+y') -- Copy
 

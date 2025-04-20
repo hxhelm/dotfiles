@@ -1,16 +1,4 @@
 return {
-  {
-    "VonHeikemen/lsp-zero.nvim",
-    branch = "v4.x",
-    lazy = true,
-    config = false,
-  },
-  {
-    "williamboman/mason.nvim",
-    lazy = false,
-    config = true,
-  },
-
   -- Autocompletion
   {
     "hrsh7th/nvim-cmp",
@@ -18,6 +6,11 @@ return {
     dependencies = {
       { "L3MON4D3/LuaSnip" },
     },
+    opts = function(_, opts)
+      table.insert(opts.sources, { name = "nvim_lsp" })
+      table.insert(opts.sources, { name = "luasnip" })
+      table.insert(opts.sources, { name = "crates" })
+    end,
     config = function()
       local cmp = require("cmp")
       local cmp_action = require("lsp-zero").cmp_action()
@@ -25,11 +18,6 @@ return {
       require("luasnip.loaders.from_vscode").lazy_load()
 
       cmp.setup({
-        sources = {
-          { name = "nvim_lsp" },
-          { name = "crates" },
-          { name = "luasnip" },
-        },
         mapping = cmp.mapping.preset.insert({
           ["<CR>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
@@ -76,6 +64,19 @@ return {
         },
       })
     end,
+  },
+
+  {
+    "VonHeikemen/lsp-zero.nvim",
+    branch = "v4.x",
+    lazy = true,
+    config = false,
+  },
+
+  {
+    "williamboman/mason.nvim",
+    lazy = false,
+    config = true,
   },
 
   -- LSP
