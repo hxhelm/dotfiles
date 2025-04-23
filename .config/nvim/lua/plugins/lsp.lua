@@ -6,18 +6,18 @@ return {
     dependencies = {
       { "L3MON4D3/LuaSnip" },
     },
-    opts = function(_, opts)
-      table.insert(opts.sources, { name = "nvim_lsp" })
-      table.insert(opts.sources, { name = "luasnip" })
-      table.insert(opts.sources, { name = "crates" })
-    end,
-    config = function()
+    opts = function()
       local cmp = require("cmp")
       local cmp_action = require("lsp-zero").cmp_action()
       local luasnip = require("luasnip")
       require("luasnip.loaders.from_vscode").lazy_load()
 
-      cmp.setup({
+      return {
+        sources = cmp.config.sources({
+          { name = "nvim_lsp" },
+          { name = "luasnip" },
+          { name = "crates" },
+        }),
         mapping = cmp.mapping.preset.insert({
           ["<CR>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
@@ -62,7 +62,7 @@ return {
             vim.snippet.expand(args.body)
           end,
         },
-      })
+      }
     end,
   },
 
