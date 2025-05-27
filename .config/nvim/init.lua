@@ -1,17 +1,6 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
 
--- vim-plug setup
-local Plug = vim.fn["plug#"]
-vim.call("plug#begin")
-
--- list vim plugins here
-Plug("tpope/vim-sensible")
-Plug("tpope/vim-surround")
-Plug("AndrewRadev/splitjoin.vim")
-
-vim.call("plug#end")
-
 -- neovide setup
 if vim.g.neovide then
   vim.g.neovide_scale_factor = 1.1
@@ -33,3 +22,4 @@ end
 
 -- misc settings
 vim.g.rustfmt_autosave = 1
+vim.g.clipboard = "wl-copy"
