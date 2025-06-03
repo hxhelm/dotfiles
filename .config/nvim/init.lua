@@ -13,7 +13,7 @@ if vim.g.neovide then
   vim.g.neovide_scroll_animation_length = 0
 
   vim.keymap.set("n", "<D-s>", ":w<CR>") -- Save
-  vim.keymap.set("v", "<D-c>", '"+y') -- Copy
+  vim.keymap.set("v", "<D-c>", '"+y')    -- Copy
 
   vim.keymap.set({ "n", "v", "s", "x", "o", "i", "l", "c", "t" }, "<D-v>", function()
     vim.api.nvim_paste(vim.fn.getreg("+"), true, -1)
@@ -55,4 +55,3 @@ local lsp_attach = function(args)
   vim.keymap.set("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 end
 vim.api.nvim_create_autocmd('LspAttach', { callback = lsp_attach })
-
