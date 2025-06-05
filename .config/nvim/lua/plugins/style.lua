@@ -1,16 +1,12 @@
 return {
   {
-    "0xstepit/flow.nvim",
+    'sainnhe/everforest',
     lazy = false,
     priority = 1000,
-    opts = {},
     config = function()
-      require("flow").setup({
-        fluo_color = "pink",
-        mode = "normal",
-        aggressive_spell = false,
-      })
-      vim.cmd("colorscheme flow")
-    end,
-  },
+      vim.g.everforest_enable_italic = true
+      vim.g.everforest_background = 'hard'
+      vim.cmd.colorscheme('everforest')
+    end
+  }
 }
