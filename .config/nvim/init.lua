@@ -21,7 +21,11 @@ if vim.g.neovide then
 end
 
 -- misc settings
-vim.g.clipboard = "wl-copy"
+if vim.fn.has('macunix') then
+  vim.g.clipboard = "pbcopy"
+else
+  vim.g.clipboard = "wl-copy"
+end
 
 -- setup and enable language servers
 vim.lsp.config('luals', {
@@ -31,7 +35,6 @@ vim.lsp.config('luals', {
 })
 vim.lsp.enable('luals')
 
--- setup and enable language servers
 vim.lsp.config('rust_analyzer', {
   on_init = function()
     print('rust-analyzer now runs in the background')
@@ -39,6 +42,13 @@ vim.lsp.config('rust_analyzer', {
 })
 vim.g.rustfmt_autosave = 1
 vim.lsp.enable('rust_analyzer')
+
+vim.lsp.config('phpactor', {
+  on_init = function()
+    print('phpactor now runs in the background')
+  end,
+})
+vim.lsp.enable('phpactor')
 
 local lsp_attach = function(args)
   local opts = { buffer = args.buf }
