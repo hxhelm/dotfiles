@@ -21,7 +21,7 @@ if vim.g.neovide then
 end
 
 -- misc settings
-if vim.fn.has('macunix') then
+if vim.fn.has('macunix') == 1 then
   vim.g.clipboard = "pbcopy"
 else
   vim.g.clipboard = "wl-copy"
